@@ -1,12 +1,12 @@
 # ECG-challenge
 
 
-# Resource
+# Resources
 ## Tutorials
 3Blue1Brown: What are neuralnetworks? [[Video](https://www.youtube.com/watch?v=aircAruvnKk)]  
 Transfer Learning and Fine tuning. [[Notebook from TensorFlow](https://www.tensorflow.org/tutorials/images/transfer_learning)]
 
-## Existed repositories/notebooks
+## Existing repositories / notebooks
 
 [Physionet Challenge 2020](https://www.kaggle.com/code/bjoernjostein/physionet-challenge-2020)  
   develop an automated interpretation algorithm for identification of clinical diagnoses from 12-lead ECG recordings.
