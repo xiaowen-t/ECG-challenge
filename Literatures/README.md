@@ -14,4 +14,7 @@ Transfer Learning and Fine tuning. [[Notebook from TensorFlow](https://www.tenso
 [PTB-XL Dataset on Kaggle](https://www.kaggle.com/datasets/khyeh0719/ptb-xl-dataset/code)
 
 [PTB-XL wrangling](https://www.kaggle.com/code/khyeh0719/ptb-xl-dataset-wrangling) Go to website. press copy and edit. Start running blocks.
+
+
+[paper on transferlearning and ECG](https://www.nature.com/articles/s41598-021-84374-8) & its [GITHUB page](https://github.com/kweimann/ecg-transfer-learning)
 # Ideas
