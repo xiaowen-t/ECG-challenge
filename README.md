@@ -1,5 +1,19 @@
 # ECG-challenge
-This repository is about...
+This repository presents an example of exploring bias in a 
+neural network-based model predicting myocardial infarction from electrocardiograms.
+
+The work has been carried out in connection with the Data Science Spring School & Challenge for Early Career Researchers & Professionals 2022.
+
+# Background
+Electrocardiographic characteristics have been shown to be influenced by patient body mass index. 
+
+
+# Aim
+
+
+
+
+
 # Visualization
     see notebook analysis.ipynb.  
 # Experiment
