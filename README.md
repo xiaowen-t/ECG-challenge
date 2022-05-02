@@ -18,14 +18,19 @@ Electrocardiographic characteristics have been shown to be influenced by patient
     see notebook analysis.ipynb.  
 # Experiment
     see prediction.ipynb.
-    models/ are copied from repository Deep Learning for ECG Analysis: Benchmarks and Insights from PTB-XL.
-    Quick experiments with following settings:  
+
     The testing dataset contains 300 patients, 100 for each BMI group (random selected). 
-    3 Groups are equally separated according to the BMI values (from low to high). 
+    3 Groups are separated according to the BMI values:  
+    Group 1: 
+        Below 18.5 = Underweight
+        18.5–24.9 = Normal weight  
+    Group 2:
+        25.0–29.9 = Pre-obesity  
+    Group 3:
+        30.0–34.9 = Obesity class I
+        35.0–39.9 = Obesity class II  
+
     The training dataset contains all the other patients with MI annotation.
-    Group 1: auc = 0.5687
-    Group 2: auc = 0.57969
-    Group 3: auc = 0.61682
 # Goal
 # To do List
 put in what we want to see from data

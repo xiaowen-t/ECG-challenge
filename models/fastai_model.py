@@ -6,7 +6,7 @@ from fastai import *
 # from fastai.train import *
 from fastai.metrics import *
 from fastai.torch_core import *
-# from fastai.callbacks.tracker import SaveModelCallback
+# from fastai.callback.cores.tracker import SaveModelCallback
 
 from pathlib import Path
 from functools import partial
@@ -26,7 +26,7 @@ import matplotlib
 import matplotlib.pyplot as plt
 
 #eval for early stopping
-from fastai.callback import Callback
+from fastai.callback.core import Callback
 from utils.utils import evaluate_experiment
 
 class metric_func(Callback):

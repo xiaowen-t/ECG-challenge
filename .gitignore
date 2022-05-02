@@ -3,3 +3,6 @@
 /outputs/
 /data/
 /__pycache__/
+/models/
+/utils/
+/test.ipynb

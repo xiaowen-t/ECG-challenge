@@ -4,7 +4,7 @@ import torch.nn.functional as F
 import math
 
 from fastai.layers import *
-from fastai.core import *
+from fastai.tabular.core import *
 
 class AdaptiveConcatPoolRNN(nn.Module):
     def __init__(self, bidirectional):
