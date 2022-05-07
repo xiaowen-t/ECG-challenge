@@ -40,9 +40,20 @@ In this project, we aimed to explore if patient body mass index influences the p
     The training dataset contains all the other patients with MI annotation.
 # Models
 resnet_18 with the first layer adpated to single channel 2D input.
+Difference between conv1d and conv2d.
+![image](https://github.com/meansnothing/ECG-challenge/blob/main/docs/conv1d.gif)
+![image](https://github.com/meansnothing/ECG-challenge/blob/main/docs/conv2d.gif)
 # Resutls
+![image](https://github.com/meansnothing/ECG-challenge/blob/main/docs/roc_curve.png)
 ## bias between different groups
 
+Results from 10 experiments.
+![image](https://github.com/meansnothing/ECG-challenge/blob/main/docs/group_results.png)
+
+Confusion matrix from one of the model.
+![image](https://github.com/meansnothing/ECG-challenge/blob/main/docs/confu_1.png)
+![image](https://github.com/meansnothing/ECG-challenge/blob/main/docs/confu2.png)
+![image](https://github.com/meansnothing/ECG-challenge/blob/main/docs/confu_3.png)
 
 # Goal
 # To do List
