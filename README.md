@@ -1,13 +1,16 @@
 # ECG-challenge
 This repository presents an example of exploring bias in a 
-neural network-based model predicting myocardial infarction from electrocardiograms.
+neural network-based model predicting myocardial infarction from electrocardiograms (ECGs).
 
 The work has been carried out in connection with the Data Science Spring School & Challenge for Early Career Researchers & Professionals 2022.
 
 # Background
 Electrocardiographic characteristics have been shown to be influenced by patient body mass index. 
 # Aim
+In this project, we aimed to explore if patient body mass index influences the performance of a neural network-based model predicting myocardial infarction from 12-lead ECGs.
 
+# Visualization
+    see notebook analysis.ipynb.  
 # Experiment
     see prediction.ipynb.
 
