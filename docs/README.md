@@ -6,7 +6,8 @@ Transfer Learning and Fine tuning. [[Notebook from TensorFlow](https://www.tenso
 
 
 ## Existing repositories / notebooks
-[Deep Learning for ECG Analysis: Benchmarks and Insights from PTB-XL](https://github.com/helme/ecg_ptbxl_benchmarking)
+[Deep Learning for ECG Analysis: Benchmarks and Insights from PTB-XL](https://github.com/helme/ecg_ptbxl_benchmarking)  
+
 [Physionet Challenge 2020](https://www.kaggle.com/code/bjoernjostein/physionet-challenge-2020)  
   develop an automated interpretation algorithm for identification of clinical diagnoses from 12-lead ECG recordings.
 ![image](https://user-images.githubusercontent.com/38263719/159794030-726a221a-35a3-4e59-a583-b0209220bf2b.png)  

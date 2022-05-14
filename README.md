@@ -12,47 +12,47 @@ In this project, we aimed to explore if patient body mass index influences the p
 # Experiment
 see analysis.ipynb and prediction.ipynb.
 
-The testing dataset contains 300 patients, 100 for each BMI group (random selected). 
+We split the train-test dataset according to the BMI.
+## Testing dataset
+The testing dataset is devided into 3 groups according to WHO BMI grouping, each goup contains 128 samples:
 
-3 Groups are separated according to the BMI values:  
+Group 1:  
+    Below 18.5 = Underweight  
+    18.5–24.9 = Normal weight    
 
-WHO BMI grouping
+Group 2:  
+    25.0–29.9 = Pre-obesity    
 
-BMI - Nutritional status
-Below 18.5 = Underweight
-18.5–24.9 = Normal weight
-25.0–29.9 = Pre-obesity
-30.0–34.9 = Obesity class I
-35.0–39.9 = Obesity class II
-Above 40 = Obesity class III
-
-Group 1: 
-    Below 18.5 = Underweight
-    18.5–24.9 = Normal weight  
-Group 2:
-    25.0–29.9 = Pre-obesity  
-Group 3:
-    30.0–34.9 = Obesity class I
-    35.0–39.9 = Obesity class II  
-
+Group 3:  
+    30.0–34.9 = Obesity class I  
+    35.0–39.9 = Obesity class II    
+    Above 40 = Obesity class III
+## Training dataset
 The training dataset contains all the other patients with MI annotation.
 # Models
-resnet_18 with the first layer changed to accept a single channel 2D input.
+We simply adapt the `resnet_18` from Pytorch's official implementation. The first layer is changed to accept a single channel 2D input. (instead of 3 channel image data.)
 ```
     model = torchvision.models.resnet18(num_classes=1)
     model.conv1 = nn.Conv2d(1, 64, kernel_size=7, stride=2, padding=2,bias=False)
 ```
-Difference between conv1d and conv2d. 
+Common way to use convolutional neural networks for ECG training is to use 1D convolution kernels. The difference between `conv1d` layer and `conv2d` layer is visualized below, conv2d layer is able to extract the internal and inter-lead features of the 12-lead ECG.
+
 ![image](https://github.com/meansnothing/ECG-challenge/blob/main/docs/conv1d.gif)  
 
 ![image](https://github.com/meansnothing/ECG-challenge/blob/main/docs/conv2d.gif)  
-There is information exchange between different leads by con2d.
+
+We also used this model to predict the gender, notebook available on [Kaggle](https://www.kaggle.com/code/meansnothing/simple-binary-classification-with-resnet?scriptVersionId=94573461). Preliminary experiment with `resnet_152` achieved auc=0.93, which indicates that processing 12-lead ECG data directly using 2D CNN is at least not a worse approach.  
+
+Such a result brings up more questions to think about, for example:
+When building models for datasets from different fields, what are the focus points we need to consider?  
+-> Whether the exchange of information during forward computation (the receptive fields and the communication between channels) is in line with the opinions of professionals?    
+
 # Resutls  
 
 ![image](https://github.com/meansnothing/ECG-challenge/blob/main/docs/roc_curve.png)
 ## bias between different groups
 
-Results from 10 experiments.  
+Results of different groups from 10 experiments.  
 
 ![image](https://github.com/meansnothing/ECG-challenge/blob/main/docs/group_results.png)
 
@@ -68,3 +68,13 @@ Confusion matrix from one of the model by different groups.
 # To do List
 put in what we want to see from data
 
+# Ref
+
+BMI - Nutritional status  
+
+Below 18.5 = Underweight  
+18.5–24.9 = Normal weight  
+25.0–29.9 = Pre-obesity  
+30.0–34.9 = Obesity class I  
+35.0–39.9 = Obesity class II  
+Above 40 = Obesity class III
