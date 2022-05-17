@@ -14,7 +14,8 @@ see analysis.ipynb and prediction.ipynb.
 
 We split the train-test dataset according to the BMI.
 ## Testing dataset
-The testing dataset is devided into 3 groups according to WHO BMI grouping, each goup contains 128 samples:
+For experiment 1, the testing dataset is devided into 3 groups according to WHO BMI grouping, each goup contains 128 samples:  
+For experiment 2, the testing dataset is devided into 3 groups according to WHO BMI grouping, each goup contains 64 samples:  
 
 Group 1:  
     Below 18.5 = Underweight  
@@ -28,7 +29,8 @@ Group 3:
     35.0–39.9 = Obesity class II    
     Above 40 = Obesity class III
 ## Training dataset
-The training dataset contains all the other patients with MI annotation.
+For eperiment 1, the training dataset contains all the other patients with MI annotation.  
+For eperiment 2, the training dataset contains 320 patients from each group.
 # Models
 We simply adapt the `resnet_18` from Pytorch's official implementation. The first layer is changed to accept a single channel 2D input. (instead of 3 channel image data.)
 ```
@@ -48,13 +50,19 @@ When building models for datasets from different fields, what are the focus poin
 -> Whether the exchange of information during forward computation (the receptive fields and the communication between channels) is in line with the opinions of professionals?    
 
 # Resutls  
-
 ![image](https://github.com/meansnothing/ECG-challenge/blob/main/docs/roc_curve.png)
-## bias between different groups
+## bias between different groups  
+Experiment 1:  
+With imbalance classes.  
 
-Results of different groups from 10 experiments.  
+![image](https://github.com/meansnothing/ECG-challenge/blob/main/docs/group_results.png)  
 
-![image](https://github.com/meansnothing/ECG-challenge/blob/main/docs/group_results.png)
+![image](https://github.com/meansnothing/ECG-challenge/blob/main/docs/distribution_bmi.png)  
+
+Experiment 2:  
+Balanced by subsampling, the training data contains equal number of samples from different groups.    
+
+![image](https://github.com/meansnothing/ECG-challenge/blob/main/docs/group_results_equal.png)  
 
 Confusion matrix from one of the model by different groups.  
 
