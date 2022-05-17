@@ -69,13 +69,17 @@ class ECG_Dataset(torch.utils.data.Dataset):
         df['MI'] = df['scp_codes'].apply(lambda x: code_to_MI(x))
         # reshape from (n_samples, seq_len) to (n_samples, 1, seq_len)
         # X = X.reshape(X.shape[0],1,X.shape[1]*X.shape[2])
-        df.loc[random.sample(sorted(df[(df['BMI']>0)&(df['BMI']<25)&(~df['MI'].isna())].index),128),'bmi_group'] = 1 
-        df.loc[random.sample(sorted(df[(df['BMI']>=25)&(df['BMI']<30)&(~df['MI'].isna())].index),128),'bmi_group'] = 2 
-        df.loc[random.sample(sorted(df[(df['BMI']>=30)&(df['BMI']<100)&(~df['MI'].isna())].index),128),'bmi_group'] = 3 
-        target_indices = df[~df['MI'].isna()].index
+        df.loc[random.sample(sorted(df[(df['BMI']>0)&(df['BMI']<25)&(~df['MI'].isna())].index),64),'bmi_group'] = 1 
+        df.loc[random.sample(sorted(df[(df['BMI']>=25)&(df['BMI']<30)&(~df['MI'].isna())].index),64),'bmi_group'] = 2 
+        df.loc[random.sample(sorted(df[(df['BMI']>=30)&(df['BMI']<100)&(~df['MI'].isna())].index),64),'bmi_group'] = 3 
+        
+        df.loc[random.sample(sorted(df[(df['BMI']>0)&(df['BMI']<25)&(df['bmi_group'].isna())&(~df['MI'].isna())].index),320),'train'] = True 
+        df.loc[random.sample(sorted(df[(df['BMI']>=25)&(df['BMI']<30)&(df['bmi_group'].isna())&(~df['MI'].isna())].index),320),'train'] = True 
+        df.loc[random.sample(sorted(df[(df['BMI']>=30)&(df['BMI']<100)&(df['bmi_group'].isna())&(~df['MI'].isna())].index),320),'train'] = True 
+        train_indices = df[df['train']==True].index
         test_indices = df[~df['bmi_group'].isna()].index
         if train is True:
-            indicies = df[(~df.index.isin(test_indices))&(df.index.isin(target_indices))].index
+            indicies = train_indices
         else:
             indicies = df[df['bmi_group'].isin(groups)].index
         y = np.array(df.iloc[indicies]['MI'])
