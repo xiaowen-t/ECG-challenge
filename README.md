@@ -30,7 +30,7 @@ Group 3:
     Above 40 = Obesity class III
 ## Training dataset
 For eperiment 1, the training dataset contains all the other patients with MI annotation.  
-For eperiment 2, the training dataset contains 320 patients from each group.
+For eperiment 2, the training dataset contains only samples with bmi values, 320 from each bmi group.
 # Models
 We simply adapt the `resnet_18` from Pytorch's official implementation. The first layer is changed to accept a single channel 2D input. (instead of 3 channel image data.)
 ```
