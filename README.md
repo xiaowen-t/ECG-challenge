@@ -4,6 +4,8 @@ neural network-based model predicting myocardial infarction from electrocardiogr
 
 The work has been carried out in connection with the Data Science Spring School & Challenge for Early Career Researchers & Professionals 2022.
 
+![image](https://github.com/meansnothing/ECG-challenge/blob/main/Poster.jpg)  
+
 # Background
 Electrocardiographic characteristics have been shown to be influenced by patient body mass index. 
 # Aim
