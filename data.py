@@ -59,9 +59,11 @@ def code_to_MI(code):
             return 1
 
 class ECG_Dataset(torch.utils.data.Dataset):
-    def __init__(self, train=True,groups=[1,2,3]):
+    def __init__(self, train=True,groups=[1,2,3],test_size=64,balanced=True):
         """
-        Dataloader for MI prediction
+        Dataset for exploring bias in BMI values by MI prediction
+        test_size : test samples from each BMI group
+        balanced : whether training dataset is balanced in terms of BMI groups
         """
         df = pd.read_csv('data/ptbxl_database.csv')#.reset_index(drop=True)
         X = load_data_ptbxl(df,100,'data/',standardize=True)
@@ -69,17 +71,17 @@ class ECG_Dataset(torch.utils.data.Dataset):
         df['MI'] = df['scp_codes'].apply(lambda x: code_to_MI(x))
         # reshape from (n_samples, seq_len) to (n_samples, 1, seq_len)
         # X = X.reshape(X.shape[0],1,X.shape[1]*X.shape[2])
-        df.loc[random.sample(sorted(df[(df['BMI']>0)&(df['BMI']<25)&(~df['MI'].isna())].index),64),'bmi_group'] = 1 
-        df.loc[random.sample(sorted(df[(df['BMI']>=25)&(df['BMI']<30)&(~df['MI'].isna())].index),64),'bmi_group'] = 2 
-        df.loc[random.sample(sorted(df[(df['BMI']>=30)&(df['BMI']<100)&(~df['MI'].isna())].index),64),'bmi_group'] = 3 
-        
-        df.loc[random.sample(sorted(df[(df['BMI']>0)&(df['BMI']<25)&(df['bmi_group'].isna())&(~df['MI'].isna())].index),320),'train'] = True 
-        df.loc[random.sample(sorted(df[(df['BMI']>=25)&(df['BMI']<30)&(df['bmi_group'].isna())&(~df['MI'].isna())].index),320),'train'] = True 
-        df.loc[random.sample(sorted(df[(df['BMI']>=30)&(df['BMI']<100)&(df['bmi_group'].isna())&(~df['MI'].isna())].index),320),'train'] = True 
-        train_indices = df[df['train']==True].index
-        test_indices = df[~df['bmi_group'].isna()].index
+        df.loc[random.sample(sorted(df[(df['BMI']>0)&(df['BMI']<25)&(~df['MI'].isna())].index),test_size),'bmi_group'] = 1 
+        df.loc[random.sample(sorted(df[(df['BMI']>=25)&(df['BMI']<30)&(~df['MI'].isna())].index),test_size),'bmi_group'] = 2 
+        df.loc[random.sample(sorted(df[(df['BMI']>=30)&(df['BMI']<100)&(~df['MI'].isna())].index),test_size),'bmi_group'] = 3 
         if train is True:
-            indicies = train_indices
+            if balanced is True:
+                df.loc[random.sample(sorted(df[(df['BMI']>0)&(df['BMI']<25)&(df['bmi_group'].isna())&(~df['MI'].isna())].index),320),'train'] = True 
+                df.loc[random.sample(sorted(df[(df['BMI']>=25)&(df['BMI']<30)&(df['bmi_group'].isna())&(~df['MI'].isna())].index),320),'train'] = True 
+                df.loc[random.sample(sorted(df[(df['BMI']>=30)&(df['BMI']<100)&(df['bmi_group'].isna())&(~df['MI'].isna())].index),320),'train'] = True 
+                indicies = df[df['train']==True].index
+            else:
+                indicies = df[(df.bmi_group.isna())&(~df['MI'].isna())].index
         else:
             indicies = df[df['bmi_group'].isin(groups)].index
         y = np.array(df.iloc[indicies]['MI'])
