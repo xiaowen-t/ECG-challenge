@@ -45,7 +45,7 @@ Common way to use convolutional neural networks for ECG training is to use 1D co
 
 ![image](https://github.com/meansnothing/ECG-challenge/blob/main/docs/conv2d.gif)  
 
-We also used this model to predict the gender, notebook available on [Kaggle](https://www.kaggle.com/code/meansnothing/simple-binary-classification-with-resnet?scriptVersionId=94573461). Preliminary experiment with `resnet_152` achieved auc=0.93, which indicates that processing 12-lead ECG data directly using 2D CNN is at least not a worse approach.  
+We also used this model to predict the gender, notebook available on [Kaggle](https://www.kaggle.com/code/meansnothing/binary-classification-with-2d-resnet/notebook?scriptVersionId=94728151). Preliminary experiment with `resnet_152` achieved auc=0.93, which indicates that processing 12-lead ECG data directly using 2D CNN is at least not a worse approach.  
 
 Such a result brings up more questions to think about, for example:
 When building models for datasets from different fields, what are the focus points we need to consider?  
