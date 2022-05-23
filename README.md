@@ -6,6 +6,7 @@ The work has been carried out in connection with the Data Science Spring School 
 
 ![image](https://github.com/meansnothing/ECG-challenge/blob/main/Poster.jpg)  
 
+Example of gender prediction with 2d resnet available on [Kaggle](https://www.kaggle.com/code/meansnothing/binary-classification-with-2d-resnet/notebook?scriptVersionId=94728151). 
 # Background
 Electrocardiographic characteristics have been shown to be influenced by patient body mass index. 
 # Aim
@@ -15,6 +16,7 @@ In this project, we aimed to explore if patient body mass index influences the p
 see analysis.ipynb and prediction.ipynb.
 
 We split the train-test dataset according to the BMI.
+
 ## Testing dataset
 For experiment 1, the testing dataset is devided into 3 groups according to WHO BMI grouping, each goup contains 128 samples:  
 For experiment 2, the testing dataset is devided into 3 groups according to WHO BMI grouping, each goup contains 64 samples:  
@@ -45,13 +47,13 @@ Common way to use convolutional neural networks for ECG training is to use 1D co
 
 ![image](https://github.com/meansnothing/ECG-challenge/blob/main/docs/conv2d.gif)  
 
-We also used this model to predict the gender, notebook available on [Kaggle](https://www.kaggle.com/code/meansnothing/binary-classification-with-2d-resnet/notebook?scriptVersionId=94728151). Preliminary experiment with `resnet_152` achieved auc=0.93, which indicates that processing 12-lead ECG data directly using 2D CNN is at least not a worse approach.  
+We also used this model to predict the gender, notebook available on [Kaggle](https://www.kaggle.com/code/meansnothing/binary-classification-with-2d-resnet/notebook?). Preliminary experiment with `resnet_152` achieved auc=0.93, which indicates that processing 12-lead ECG data directly using 2D CNN is at least not a worse approach.  
 
 Such a result brings up more questions to think about, for example:
 When building models for datasets from different fields, what are the focus points we need to consider?  
 -> Whether the exchange of information during forward computation (the receptive fields and the communication between channels) is in line with the opinions of professionals?    
 
-# Resutls  
+# Results  
 ![image](https://github.com/meansnothing/ECG-challenge/blob/main/docs/roc_curve.png)
 ## bias between different groups  
 Experiment 1:  
@@ -72,11 +74,6 @@ Confusion matrix from one of the model by different groups.
 ![image](https://github.com/meansnothing/ECG-challenge/blob/main/docs/confu2.png)  
 ![image](https://github.com/meansnothing/ECG-challenge/blob/main/docs/confu_3.png)
 
-
-
-# Goal
-# To do List
-put in what we want to see from data
 
 # Ref
 
